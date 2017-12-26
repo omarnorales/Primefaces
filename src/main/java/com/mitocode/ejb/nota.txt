@@ -1,0 +1,1 @@
+luego de crear el modelo se pueden generar con SESSION BEANS FOR ENTITY CLASSES

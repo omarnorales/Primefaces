@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        
+        <!--h:outputStylesheet name="./css/default.css"/-->
+        <!--h:outputStylesheet name="./css/cssLayout.css"/-->
+        
+        <title>Facelets Template</title>
+        <!--renderiza en caso de que no haya hecho login -->
+        <!--si la variable esta almacenada en sesion muestra la pagina
+        de lo contrario redirecciona o renderiza a login, este metodo
+        se ejecutara antes de que la pagina sea visualizada-->
+        <f:event type="preRenderView" listener="#{plantillaController.verificarSesion()}" />
+    </h:head>
+
+    <h:body>
+
+        <div id="top">
+            <ui:insert name="top">
+                <h:form>
+                    <p:menubar model="#{menuController.model}">
+                        <f:facet name="options" >
+                            <!--f:facet establece una especie de seccion
+                            dentro de otro componente-->
+                            <p:commandButton actionListener="#{menuController.cerrarSesion()}" 
+                                             icon="ui-icon-power" title="Cerrar Sesión"
+                                             action="/index?faces-redirect=true"/>
+                        </f:facet>
+                        <!--p:menuitem value="Opcion 1"/>
+                        <p:menuitem value="Opcion 2" />
+                        <p:menuitem value="Opcion 3" /-->                     
+                    </p:menubar>
+                    
+                </h:form>
+            </ui:insert>
+        </div>
+
+        <div id="content" class="center_content">
+            <ui:insert name="content">Content</ui:insert>
+        </div>
+
+        <div id="bottom" style="text-align: center">
+            <ui:insert name="bottom">
+                <p>Ejemplo de Primefaces Avanzado por Onorales</p>
+                <p>Suscribete al canal</p>
+            </ui:insert>
+        </div>
+
+    </h:body>
+
+</html>
